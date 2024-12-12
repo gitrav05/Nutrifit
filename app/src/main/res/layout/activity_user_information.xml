@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="식단 관리를 위한 정보를 입력해 주세요."
+        android:textStyle="bold"
+        android:paddingBottom="16dp" />
+
+    <EditText
+        android:id="@+id/userHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:hint="키(cm)"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/userWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:hint="몸무게(kg)"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/userAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:hint="나이"
+        android:layout_marginTop="8dp" />
+
+    <RadioGroup
+        android:id="@+id/userGenderGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/userGenderMaleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="남성" />
+
+        <RadioButton
+            android:id="@+id/userGenderFemaleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="여성" />
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/activitySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:entries="@array/activityLevels"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="다음" />
+</LinearLayout>
