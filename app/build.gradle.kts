@@ -38,6 +38,8 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation("androidx.activity:activity-ktx:1.7.2")
+    implementation("org.apache.commons:commons-math3:3.6.1")
+    implementation("com.opencsv:opencsv:5.7.1")
     implementation ("com.doinglab.foodlens:FoodLens:2.6.6")
     implementation("com.doinglab.foodlens:FoodLens:$FOODLENS_SDK_VERSION") {
         exclude(group = "com.android.support", module = "appcompat")

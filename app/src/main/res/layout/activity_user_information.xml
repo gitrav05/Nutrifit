@@ -71,34 +71,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="가장 선호하는 밥 종류"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:paddingBottom="8dp" />
-
-        <RadioGroup
-            android:id="@+id/riceRadioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
-
-            <RadioButton
-                android:id="@+id/radioRice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="백미밥" />
-
-            <RadioButton
-                android:id="@+id/radioRiceMix"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="잡곡밥" />
-        </RadioGroup>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="가장 선호하는 국 종류"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
@@ -116,12 +88,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="찌개 및 전골류" />
-
-            <RadioButton
-                android:id="@+id/radioBoiled"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="찜류" />
 
             <RadioButton
                 android:id="@+id/radioSoup"
@@ -164,16 +130,16 @@
                 android:text="볶음류" />
 
             <RadioButton
-                android:id="@+id/radioMix"
+                android:id="@+id/radioSteam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="무침류" />
+                android:text="찜류" />
 
             <RadioButton
                 android:id="@+id/radioKP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전류" />
+                android:text="전 및 부침류" />
 
             <RadioButton
                 android:id="@+id/radioBraised"
@@ -181,29 +147,6 @@
                 android:layout_height="wrap_content"
                 android:text="조림류" />
 
-            <RadioButton
-                android:id="@+id/radioVeg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="나물류" />
-
-            <RadioButton
-                android:id="@+id/radioKimchi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="김치류" />
-
-            <RadioButton
-                android:id="@+id/radioPK"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="절임류" />
-
-            <RadioButton
-                android:id="@+id/radioJeot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="젓갈류" />
         </RadioGroup>
 
         <Button

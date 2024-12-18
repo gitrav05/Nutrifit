@@ -43,7 +43,6 @@ public class UserInformActivity extends AppCompatActivity {
         activitySpinner = findViewById(R.id.activitySpinner);
         nextButton = findViewById(R.id.nextButton);
 
-        riceRadioGroup = findViewById(R.id.riceRadioGroup);
         stewRadioGroup = findViewById(R.id.stewRadioGroup);
         sideDishRadioGroup = findViewById(R.id.sideDishRadioGroup);
 
@@ -59,7 +58,6 @@ public class UserInformActivity extends AppCompatActivity {
     }
 
     private void saveUserInfo() {
-        // 입력값 가져오기
         String heightText = heightEditText.getText().toString();
         String weightText = weightEditText.getText().toString();
         String ageText = ageEditText.getText().toString();
@@ -68,7 +66,7 @@ public class UserInformActivity extends AppCompatActivity {
         String gender = (selectedGenderButton != null) ? selectedGenderButton.getText().toString() : null;
         String activity = activitySpinner.getSelectedItem().toString();
 
-        // 입력값 검증
+        // 입력 확인
         if (heightText.isEmpty() || weightText.isEmpty() || ageText.isEmpty() || gender == null) {
             Toast.makeText(this, "모든 정보를 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
@@ -99,20 +97,16 @@ public class UserInformActivity extends AppCompatActivity {
                 break;
         }
 
+        // 찌개 및 전골, 국 및 탕 순
+        int taste1 = getSelected(stewRadioGroup, R.id.radioCasserole, 1,  R.id.radioSoup, 2);
 
-        int taste1 = getSelected(riceRadioGroup, R.id.radioRice, 1, R.id.radioRiceMix, 2);
-
-        // 찌개 및 전골, 찜, 국 및 탕 순
-        int taste2 = getSelected(stewRadioGroup, R.id.radioCasserole, 11, R.id.radioBoiled, 12, R.id.radioSoup, 13);
-
-        // 튀김, 구이, 볶음, 무침, 전류, 조림류, 나물류, 김치류, 절임류, 젓갈류 순
-        int taste3 = getSelected(sideDishRadioGroup,
-                R.id.radioFried, 21, R.id.radioGrilled, 22, R.id.radioStirFried, 23,
-                R.id.radioMix, 24, R.id.radioKP, 25, R.id.radioBraised, 26,
-                R.id.radioVeg, 27, R.id.radioKimchi, 28, R.id.radioPK, 29, R.id.radioJeot, 30);
+        // 튀김, 구이, 볶음, 찜, 전·적 및 부침, 조림
+        int taste2 = getSelected(sideDishRadioGroup,
+                R.id.radioFried, 11, R.id.radioGrilled, 12, R.id.radioStirFried, 13,
+                R.id.radioSteam, 14, R.id.radioKP, 25, R.id.radioBraised, 26);
 
         // SQLite 데이터 저장
-        userDbHelper.insertUser(height, weight, age, genderToDB, activityToDB, taste1, taste2, taste3);
+        userDbHelper.insertUser(height, weight, age, genderToDB, activityToDB, taste1, taste2);
         Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
 
         //JSON format 저장
@@ -129,7 +123,7 @@ public class UserInformActivity extends AppCompatActivity {
 
             Log.i("DB_update", "Saved Data -> Height: " + savedHeight + ", Weight: " + savedWeight +
                     ", Age: " + savedAge + ", Gender: " + genderToDB + ", Activity: " + activityToDB +
-                    ", Taste1: " + taste1 + ", Taste2: " + taste2 + ", Taste3: " + taste3);
+                    ", Taste1: " + taste1 + ", Taste2: " + taste2);
         }
         cursor.close();
 
@@ -166,7 +160,6 @@ public class UserInformActivity extends AppCompatActivity {
                     @SuppressLint("Range") int activity = cursor.getInt(cursor.getColumnIndex("activity"));
                     @SuppressLint("Range") int taste1 = cursor.getInt(cursor.getColumnIndex("taste1"));
                     @SuppressLint("Range") int taste2 = cursor.getInt(cursor.getColumnIndex("taste2"));
-                    @SuppressLint("Range") int taste3 = cursor.getInt(cursor.getColumnIndex("taste3"));
 
                     userObject.put("height", height);
                     userObject.put("weight", weight);
@@ -175,7 +168,6 @@ public class UserInformActivity extends AppCompatActivity {
                     userObject.put("activity", activity);
                     userObject.put("taste1", taste1);
                     userObject.put("taste2", taste2);
-                    userObject.put("taste3", taste3);
 
                     userArray.put(userObject); // JSONArray에 추가
                 } catch (JSONException e) {

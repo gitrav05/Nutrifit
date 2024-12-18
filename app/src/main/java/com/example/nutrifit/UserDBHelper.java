@@ -21,11 +21,8 @@ public class UserDBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_AGE = "age";
     private static final String COLUMN_GENDER = "gender";
     private static final String COLUMN_ACTIVITY = "activity";
-
-    // 새로운 컬럼 추가
     private static final String COLUMN_TASTE1 = "taste1";
     private static final String COLUMN_TASTE2 = "taste2";
-    private static final String COLUMN_TASTE3 = "taste3";
 
     // 테이블 생성 쿼리 수정
     private static final String CREATE_TABLE =
@@ -36,8 +33,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
                     COLUMN_GENDER + " INTEGER NOT NULL, " +
                     COLUMN_ACTIVITY + " INTEGER NOT NULL, " +
                     COLUMN_TASTE1 + " INTEGER DEFAULT 0, " +
-                    COLUMN_TASTE2 + " INTEGER DEFAULT 0, " +
-                    COLUMN_TASTE3 + " INTEGER DEFAULT 0)";
+                    COLUMN_TASTE2 + " INTEGER DEFAULT 0)";
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -53,7 +49,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     // 사용자 정보와 taste 데이터를 저장
     public void insertUser(double height, double weight, int age, int gender, int activity,
-                           int taste1, int taste2, int taste3) {
+                           int taste1, int taste2) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // 기존 테이블 초기화
@@ -67,7 +63,6 @@ public class UserDBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_ACTIVITY, activity);
         values.put(COLUMN_TASTE1, taste1);
         values.put(COLUMN_TASTE2, taste2);
-        values.put(COLUMN_TASTE3, taste3);
 
         db.insert(TABLE_NAME, null, values);
         db.close();

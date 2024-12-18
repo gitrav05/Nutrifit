@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,6 +15,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 
 import org.json.JSONObject;
@@ -27,6 +31,7 @@ public class CameraResultActivity extends AppCompatActivity {
 
         foodResult = new ArrayList<>();
 
+
         // 반환된 JSON 데이터를 받고 String으로 변환
         String resultJson = getIntent().getStringExtra("result_json");
 
@@ -40,6 +45,9 @@ public class CameraResultActivity extends AppCompatActivity {
     }
 
     private void processData(String resultJson) {
+        //HashSet으로 중복확인
+        HashSet<Integer> processedFoodIds = new HashSet<>();
+
         try {
             JSONObject jsonObject = new JSONObject(resultJson);
             JSONArray foodPositionList = jsonObject.getJSONArray("foodPositionList");
@@ -57,6 +65,13 @@ public class CameraResultActivity extends AppCompatActivity {
                     JSONObject candidate = foodCandidates.getJSONObject(j);
 
                     int foodId = candidate.getInt("foodId");
+
+                    // 중복된 foodID인지 확인
+                    if (processedFoodIds.contains(foodId)) {
+                        Log.i("Duplicate Skipped", "Food ID " + foodId);
+                        continue; // 중복인 경우 이 데이터를 건너뛴다
+                    }
+
                     String foodName = candidate.getString("foodName");
 
                     // nutrition 키가 있는지 확인
@@ -87,6 +102,7 @@ public class CameraResultActivity extends AppCompatActivity {
                         foodMap.put("eatAmount", String.valueOf(eatAmount));
 
                         foodResult.add(foodMap);
+                        processedFoodIds.add(foodId);
 
                         Log.i("Data", "Food ID: " + foodId + ", Food Name: " + foodName +
                                 ", Nutrition: " + formatFloat + ", Eat Amount: " + eatAmount);

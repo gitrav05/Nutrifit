@@ -30,7 +30,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CameraActivity extends AppCompatActivity {
+public class   CameraActivity extends AppCompatActivity {
 
     private Button cameraButton, galleryButton, sendButton;
     private ImageView imageView;
