@@ -1,12 +1,10 @@
-package com.example.nutrifit;
+package com.example.nutrifit1;
 
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,8 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-
-import org.json.JSONObject;
 
 public class CameraResultActivity extends AppCompatActivity {
 

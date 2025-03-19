@@ -1,4 +1,4 @@
-package com.example.nutrifit;
+package com.example.nutrifit1;
 
 import android.content.Context;
 
