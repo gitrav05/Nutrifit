@@ -1,4 +1,4 @@
-package com.example.nutrifit1;
+package com.example.nutrifit2;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

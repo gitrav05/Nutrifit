@@ -1,4 +1,4 @@
-package com.example.nutrifit1;
+package com.example.nutrifit2;
 
 import android.Manifest;
 import android.content.Intent;
